@@ -22,9 +22,26 @@ namespace Example5
                 {
                     x = rnd.Next(LEFT, RIGHT),
                     y = TOP,
+                    size = 0.5,
                     speed = 0.5,
                     hp = 5,
                     ground = false
+                }
+            );
+        }
+
+        public void AddSnail()
+        {
+            objects.Add(
+                new Snail()
+                {
+                    x = rnd.Next(LEFT, RIGHT),
+                    y = BOTTOM,
+                    size = 1,
+                    speed = 0.3,
+                    damage = 2,
+                    hp = 10,
+                    ground = true
                 }
             );
         }

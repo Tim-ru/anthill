@@ -15,6 +15,8 @@ namespace Example5
                     var key = Console.ReadKey(false);
                     if (key.Key == ConsoleKey.Spacebar)
                         a.AddFood();
+                    if (key.Key == ConsoleKey.S)
+                        a.AddSnail();
                 }
 
                 a.Update();

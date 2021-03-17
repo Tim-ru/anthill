@@ -8,6 +8,7 @@ namespace Example5
     {
         public double x,y,size;
         public double speed;
+        public int damage;
         public int hp;
         public bool ground;
 
@@ -16,6 +17,12 @@ namespace Example5
         public virtual void Touch(Movier other) { }
         public virtual void Draw() { }
 
+        public void DoDamage(Movier target)
+        {
+            var dmg = Math.Min(this.damage, target.hp);
+            this.hp += dmg;
+            target.hp -= dmg;
+        }
         public double Dist(Movier other)
         {
             if (other == null)
@@ -37,8 +44,8 @@ namespace Example5
             if (dist < 0.00001)
                 return (0,0);
 
-            var cx = this.x - other.x;
-            var cy = this.y - other.y;
+            var cx = other.x - this.x;
+            var cy = other.y - this.y;
 
             shift = Math.Min(dist, shift);
 
