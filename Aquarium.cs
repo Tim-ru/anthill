@@ -6,12 +6,28 @@ namespace Example5
 {
     class Aquarium
     {
-        const double LEFT = 0;
-        const double RIGHT = 79;
-        const double TOP = 0;
-        const double BOTTOM = 24;
+        const int LEFT = 0;
+        const int RIGHT = 79;
+        const int TOP = 0;
+        const int BOTTOM = 24;
 
         List<Movier> objects = new List<Movier>();
+
+        Random rnd = new Random();
+
+        public void AddFood()
+        {
+            objects.Add(
+                new Food()
+                {
+                    x = rnd.Next(LEFT, RIGHT),
+                    y = TOP,
+                    speed = 0.5,
+                    hp = 5,
+                    ground = false
+                }
+            );
+        }
 
         public void Update()
         {
@@ -36,7 +52,7 @@ namespace Example5
                 if (objects[i].hp <= 0)
                     objects.RemoveAt(i);
         }
-        
+
         public void Draw()
         {
             Console.Clear();

@@ -7,6 +7,7 @@ namespace Example5
     class Movier
     {
         public double x,y,size;
+        public double speed;
         public int hp;
         public bool ground;
 
