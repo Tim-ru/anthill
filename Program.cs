@@ -6,7 +6,13 @@ namespace Example5
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var a = new Aquarium();
+            while(true)
+            {
+                a.Update();
+                a.Draw();
+                System.Threading.Thread.Sleep(200);
+            }
         }
     }
 }
