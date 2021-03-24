@@ -17,6 +17,8 @@ namespace Example5
                         a.AddFood();
                     if (key.Key == ConsoleKey.S)
                         a.AddSnail();
+                    if (key.Key == ConsoleKey.F)
+                        a.AddFish();
                 }
 
                 a.Update();

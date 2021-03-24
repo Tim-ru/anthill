@@ -47,6 +47,23 @@ namespace Example5
             );
         }
 
+        public void AddFish()
+        {
+            objects.Add(
+                new Fish()
+                {
+                    x = rnd.Next(LEFT, RIGHT),
+                    y = rnd.Next(TOP, BOTTOM),
+                    size = 1,
+                    speed = 1,
+                    damage = 2,
+                    hp = 10,
+                    ground = false,
+                    OnSpawn = Spawn
+                }
+            );
+        }
+
         void Spawn(Movier obj)
         {
             var child = obj.MakeChild();
