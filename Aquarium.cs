@@ -41,16 +41,27 @@ namespace Example5
                     speed = 0.3,
                     damage = 2,
                     hp = 10,
-                    ground = true
+                    ground = true,
+                    OnSpawn = Spawn
                 }
             );
+        }
+
+        void Spawn(Movier obj)
+        {
+            var child = obj.MakeChild();
+            if (child == null)
+                return;
+            child.OnSpawn = Spawn;
+            objects.Add(child);
         }
 
         public void Update()
         {
             //движение
-            foreach(var obj in objects)
+            for(int i=0; i<objects.Count; i++)
             {
+                var obj = objects[i];
                 (double dx, double dy) = obj.GetNextMove(objects);
                 Collision c = Collision.None;
                 if (obj.x + dx < LEFT || obj.x+dx > RIGHT) { dx = 0; c = Collision.Vertical; }

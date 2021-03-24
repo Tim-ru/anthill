@@ -6,6 +6,8 @@ namespace Example5
 {
     class Snail : Movier
     {
+        const int SPAWN_HP = 20;
+
         public override (double dx, double dy) GetNextMove(IEnumerable<Movier> objects)
         {
             var target = Nearest(objects, item => item is Food && item.ground);
@@ -15,6 +17,8 @@ namespace Example5
         {
             x += dx;
             y += dy;
+            if (this.hp >= SPAWN_HP && OnSpawn != null)
+                OnSpawn(this);
         }
         public override void Touch(Movier other)
         {            
@@ -25,5 +29,23 @@ namespace Example5
         {
             ConsoleEx.Print((int)x, (int)y, "@", ConsoleColor.Yellow);
         }
+
+        public override Movier MakeChild()
+        {
+            this.hp /= 2;
+
+            var child = new Snail() {
+                x = this.x,
+                y = this.y,
+                size = this.size,
+                speed = this.speed * 0.7,
+                damage = this.damage,
+                hp = this.hp,
+                ground = this.ground
+            };
+
+            return child;
+        }
+
     }
 }

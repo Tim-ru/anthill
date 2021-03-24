@@ -6,6 +6,9 @@ namespace Example5
 {
     class Movier
     {
+        public delegate void Spawn (Movier parent);
+        public Spawn OnSpawn;
+
         public double x,y,size;
         public double speed;
         public int damage;
@@ -16,6 +19,7 @@ namespace Example5
         public virtual void Move(double dx, double dy, Collision c) { }
         public virtual void Touch(Movier other) { }
         public virtual void Draw() { }
+        public virtual Movier MakeChild() { return null; }
 
         public void DoDamage(Movier target)
         {
