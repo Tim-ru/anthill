@@ -6,7 +6,7 @@ namespace Example5
     {
         static void Main(string[] args)
         {
-            var a = new Aquarium();
+            var a = new Anthill();
 
             while(true)
             {
@@ -15,10 +15,10 @@ namespace Example5
                     var key = Console.ReadKey(false);
                     if (key.Key == ConsoleKey.Spacebar)
                         a.AddFood();
-                    if (key.Key == ConsoleKey.S)
-                        a.AddSnail();
-                    if (key.Key == ConsoleKey.F)
-                        a.AddFish();
+                    if (key.Key == ConsoleKey.A)
+                        a.AddAnt();
+                    if (key.Key == ConsoleKey.Q)
+                        a.AddQueen();
                 }
 
                 a.Update();

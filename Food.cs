@@ -16,8 +16,8 @@ namespace Example5
         {
             if (c == Collision.Horizontal)
                 ground = true;
-            x += dx;
-            y += dy;
+            // x += dx;
+            // y += dy;
         }
         public override void Draw()
         {

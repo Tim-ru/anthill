@@ -14,6 +14,7 @@ namespace Example5
         public int damage;
         public int hp;
         public bool ground;
+        public bool busy;
 
         public virtual (double dx, double dy) GetNextMove(IEnumerable<Movier> objects) { return (0,0); }
         public virtual void Move(double dx, double dy, Collision c) { }
@@ -27,6 +28,12 @@ namespace Example5
             this.hp += dmg;
             target.hp -= dmg;
         }
+
+        public void BringFood(Movier target)
+        {
+            var dmg = Math.Min(this.damage, target.hp);
+        }
+
         public double Dist(Movier other)
         {
             if (other == null)

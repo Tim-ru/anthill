@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Example5
 {
-    class Aquarium
+    class Anthill
     {
         const int LEFT = 0;
         const int RIGHT = 79;
@@ -21,55 +21,55 @@ namespace Example5
                 new Food()
                 {
                     x = rnd.Next(LEFT, RIGHT),
-                    y = TOP,
+                    y = rnd.Next(TOP, BOTTOM),
                     size = 0.5,
                     speed = 0.5,
-                    hp = 5,
+                    hp = 1,
                     ground = false
                 }
             );
         }
 
-        public void AddSnail()
+        public void AddAnt()
         {
             objects.Add(
-                new Snail()
+                new Ant()
                 {
-                    x = rnd.Next(LEFT, RIGHT),
-                    y = BOTTOM,
+                    x = RIGHT / 2,
+                    y = BOTTOM / 2,
                     size = 1,
-                    speed = 0.3,
+                    speed = 1.3,
                     damage = 2,
                     hp = 10,
                     ground = true,
-                    OnSpawn = Spawn
+                    OnSpawn = SomebodyWhantToSpawn,
+                    busy = false
                 }
             );
         }
 
-        public void AddFish()
+        public void AddQueen()
         {
             objects.Add(
-                new Fish()
+                new Queen()
                 {
-                    x = rnd.Next(LEFT, RIGHT),
-                    y = rnd.Next(TOP, BOTTOM),
-                    size = 1,
-                    speed = 1,
+                    x = RIGHT / 2,
+                    y = BOTTOM / 2,
+                    size = 2,
+                    speed = 0,
                     damage = 2,
-                    hp = 10,
-                    ground = false,
-                    OnSpawn = Spawn
+                    hp = 20,
+                    ground = true,
+                    OnSpawn = SomebodyWhantToSpawn
                 }
             );
         }
 
-        void Spawn(Movier obj)
+        void SomebodyWhantToSpawn(Movier obj)
         {
             var child = obj.MakeChild();
             if (child == null)
                 return;
-            child.OnSpawn = Spawn;
             objects.Add(child);
         }
 
